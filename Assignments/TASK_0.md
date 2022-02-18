@@ -33,12 +33,45 @@ Pour chacune d'entre elle, expliquez ce qu'elle représente et son rôle dans le
 Pour les classes `Tower`, `Aircaft`, `Airport` et `Terminal`, listez leurs fonctions-membre publiques et expliquez précisément à quoi elles servent.
 
 Tower
-    WaypointQueue get_circle() const;
-    créer quatre points
-
-    AircraftAndTerminalIter find_craft_and_terminal(const Aircraft& aircraft);
+    
+    
     WaypointQueue get_instructions(Aircraft& aircraft);
+    donnez les différentes actions de l'avion
+    
     void arrived_at_terminal(const Aircraft& aircraft);
+    annonce quand l'avion arrice sur le terminal
+
+
+Aircraft
+    /*Donne le numéro de vol*/
+    const std::string& get_flight_num() const { return flight_number; }
+    
+    /*Donne la distance au point donné*/
+    float distance_to(const Point3D& p) const { return pos.distance_to(p); }
+
+    /*Dessiner l'avion ???*/
+    void display() const override;
+
+    /*faire bouger l'avion*/
+    void move() override;
+
+
+
+Airport:
+    /*renvoie la tout de l'aéoroport*/
+    Tower& get_tower() { return tower; }
+
+    /*dessine la tour*/
+    void display() const override { texture.draw(project_2D(pos), { 2.0f, 2.0f }); }
+
+    /*Dessine les mouvements*/
+    void move() override
+    {
+        for (auto& t : terminals)
+        {
+            t.move();
+        }
+    }
 
 
 
