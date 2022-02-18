@@ -5,23 +5,43 @@
 Compilez et lancez le programme.
 
 Allez dans le fichier `tower_sim.cpp` et recherchez la fonction responsable de gérer les inputs du programme.
-Sur quelle touche faut-il appuyer pour ajouter un avion ?
-Comment faire pour quitter le programme ?
-A quoi sert la touche 'F' ?
+Sur quelle touche faut-il appuyer pour ajouter un avion ? c
+Comment faire pour quitter le programme ? x ou q
+A quoi sert la touche 'F' ? à mettre en pleine écran
 
-Ajoutez un avion à la simulation et attendez.
-Que est le comportement de l'avion ?
-Quelles informations s'affichent dans la console ?
+Ajoutez un avion à la simulation et attendez. 
+Que est le comportement de l'avion ? Il viennent, font des tours, et repartent
+Quelles informations s'affichent dans la console ? nom et actions de l'avion 
 
 Ajoutez maintenant quatre avions d'un coup dans la simulation.
-Que fait chacun des avions ?
+Que fait chacun des avions ? arrivée de la'avion, son "service, son départ
 
 ## B- Analyse du code
 
-Listez les classes du programme à la racine du dossier src/.
+Listez les classes du programme à la racine du dossier src/. 
+
+Aircraft, AircraftTypes, / (Avion, chacun a un AircraftTypes)
+Airport, AirportType,/ (Aéroport, chacun a un type)
+Point2D, Point3D,  / Coté graphique
+RunWay, Terminal, / Route où l'avion roule, zone de l'aéroport
+Tower, TowerSimulation, 
+WayPoint,  est ce que l'avion est sur la terre ou dans les airs
+
 Pour chacune d'entre elle, expliquez ce qu'elle représente et son rôle dans le programme.
 
+
 Pour les classes `Tower`, `Aircaft`, `Airport` et `Terminal`, listez leurs fonctions-membre publiques et expliquez précisément à quoi elles servent.
+
+Tower
+    WaypointQueue get_circle() const;
+    créer quatre points
+
+    AircraftAndTerminalIter find_craft_and_terminal(const Aircraft& aircraft);
+    WaypointQueue get_instructions(Aircraft& aircraft);
+    void arrived_at_terminal(const Aircraft& aircraft);
+
+
+
 Réalisez ensuite un schéma présentant comment ces différentes classes intéragissent ensemble.
 
 Quelles classes et fonctions sont impliquées dans la génération du chemin d'un avion ?
