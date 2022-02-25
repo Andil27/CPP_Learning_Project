@@ -58,13 +58,13 @@ Aircraft
 
 
 Airport:
-    /*renvoie la tout de l'aéoroport*/
+    /*renvoie la tour de l'aéoroport*/
     Tower& get_tower() { return tower; }
 
     /*dessine la tour*/
     void display() const override { texture.draw(project_2D(pos), { 2.0f, 2.0f }); }
 
-    /*Dessine les mouvements*/
+    /*Fonction d'update*/
     void move() override
     {
         for (auto& t : terminals)
@@ -75,11 +75,56 @@ Airport:
 
 
 
+Terminal:
+    /*le termina l est utilisé*/
+    bool in_use() const { return current_aircraft != nullptr; }
+
+    /*Le terminal est en service (gens qui monte et qui descendent)
+    bool is_servicing() const { return service_progress < SERVICE_CYCLES; }
+
+    /* Ajouter un avion */
+    void assign_craft(const Aircraft& aircraft) { current_aircraft = &aircraft; }
+
+    /*commencer le service, vérifie les conditions*/
+    void start_service(const Aircraft& aircraft)
+    {
+        assert(aircraft.distance_to(pos) < DISTANCE_THRESHOLD);
+        std::cout << "now servicing " << aircraft.get_flight_num() << "...\n";
+        service_progress = 0;
+    }
+
+    /*Cloture le service*/
+    void finish_service()
+    {
+        if (!is_servicing())
+        {
+            std::cout << "done servicing " << current_aircraft->get_flight_num() << '\n';
+            current_aircraft = nullptr;
+        }
+    }
+
+    /**/
+    void move() override
+    {
+        if (in_use() && is_servicing())
+        {
+            ++service_progress;
+        }
+    }
+
+
 Réalisez ensuite un schéma présentant comment ces différentes classes intéragissent ensemble.
+    Airport -> Terminal -> Tower -> Aircraft
+
 
 Quelles classes et fonctions sont impliquées dans la génération du chemin d'un avion ?
+    Waypoint, notamment la fonction getInstructinos
+
 Quel conteneur de la librairie standard a été choisi pour représenter le chemin ?
+...
+
 Expliquez les intérêts de ce choix.
+...
 
 ## C- Bidouillons !
 
