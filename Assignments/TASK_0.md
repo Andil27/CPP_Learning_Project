@@ -139,16 +139,24 @@ Modifiez le programme pour tenir compte de cela.
 
 
 2) Identifiez quelle variable contrôle le framerate de la simulation.
+
+
+...
+
 Ajoutez deux nouveaux inputs au programme permettant d'augmenter ou de diminuer cette valeur.
 Essayez maintenant de mettre en pause le programme en manipulant ce framerate. Que se passe-t-il ?\
 Ajoutez une nouvelle fonctionnalité au programme pour mettre le programme en pause, et qui ne passe pas par le framerate.
 
 3) Identifiez quelle variable contrôle le temps de débarquement des avions et doublez-le.
+    max_ground speed
+
+    aircraftype.hpp 
+    max_ground_speed
 
 4) Lorsqu'un avion a décollé, il réattérit peu de temps après.
 Faites en sorte qu'à la place, il soit retiré du programme.\
 Indices :\
-A quel endroit pouvez-vous savoir que l'avion doit être supprimé ?\
+A quel endroit pouvez-vous savoir que l'avion doit être supprimé ?\   Le terminal ou la tour
 Pourquoi n'est-il pas sûr de procéder au retrait de l'avion dans cette fonction ?
 A quel endroit de la callstack pourriez-vous le faire à la place ?\
 Que devez-vous modifier pour transmettre l'information de la première à la seconde fonction ?
@@ -157,6 +165,8 @@ Que devez-vous modifier pour transmettre l'information de la première à la sec
 Il faut également penser à le supprimer de cette liste avant de le détruire.
 Faites en sorte que l'ajout et la suppression de `display_queue` soit "automatiquement gérée" lorsqu'un `Displayable` est créé ou détruit.
 Pourquoi n'est-il pas spécialement pertinent d'en faire de même pour `DynamicObject` ?
+pour les dynacmic vu que c'est un unordered set il y a moins d'interêt
+
 
 6) La tour de contrôle a besoin de stocker pour tout `Aircraft` le `Terminal` qui lui est actuellement attribué, afin de pouvoir le libérer une fois que l'avion décolle.
 Cette information est actuellement enregistrée dans un `std::vector<std::pair<const Aircraft*, size_t>>` (size_t représentant l'indice du terminal).
@@ -169,6 +179,8 @@ Modifiez le code afin d'utiliser un conteneur STL plus adapté. Normalement, à 
 1) Comment a-t-on fait pour que seule la classe `Tower` puisse réserver un terminal de l'aéroport ?
 
 2) En regardant le contenu de la fonction `void Aircraft::turn(Point3D direction)`, pourquoi selon-vous ne sommes-nous pas passer par une réference ?
+
+
 Pensez-vous qu'il soit possible d'éviter la copie du `Point3D` passé en paramètre ?
 
 ## E- Bonus

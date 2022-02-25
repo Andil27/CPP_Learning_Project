@@ -74,3 +74,4 @@ public:
 
     friend class Tower;
 };
+
