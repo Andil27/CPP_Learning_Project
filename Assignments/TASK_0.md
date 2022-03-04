@@ -121,17 +121,15 @@ Quelles classes et fonctions sont impliquées dans la génération du chemin d'u
     Waypoint, notamment la fonction getInstructinos
 
 Quel conteneur de la librairie standard a été choisi pour représenter le chemin ?
-...
+DEQUEU
 
 Expliquez les intérêts de ce choix.
-...
+Pour le gérer comme une file
 
 ## C- Bidouillons !
 
 1) Déterminez à quel endroit du code sont définies les vitesses maximales et accélération de chaque avion.
-
-Classe AircraftTypes
-
+display_queue
 
 Le Concorde est censé pouvoir voler plus vite que les autres avions.
 Modifiez le programme pour tenir compte de cela.
@@ -139,9 +137,9 @@ Modifiez le programme pour tenir compte de cela.
 
 
 2) Identifiez quelle variable contrôle le framerate de la simulation.
+DEFAULT_TICKS_PER_SEC
 
 
-...
 
 Ajoutez deux nouveaux inputs au programme permettant d'augmenter ou de diminuer cette valeur.
 Essayez maintenant de mettre en pause le programme en manipulant ce framerate. Que se passe-t-il ?\
@@ -157,8 +155,11 @@ Ajoutez une nouvelle fonctionnalité au programme pour mettre le programme en pa
 Faites en sorte qu'à la place, il soit retiré du programme.\
 Indices :\
 A quel endroit pouvez-vous savoir que l'avion doit être supprimé ?\   Le terminal ou la tour
+
 Pourquoi n'est-il pas sûr de procéder au retrait de l'avion dans cette fonction ?
+
 A quel endroit de la callstack pourriez-vous le faire à la place ?\
+
 Que devez-vous modifier pour transmettre l'information de la première à la seconde fonction ?
 
 5) Lorsqu'un objet de type `Displayable` est créé, il faut ajouter celui-ci manuellement dans la liste des objets à afficher.

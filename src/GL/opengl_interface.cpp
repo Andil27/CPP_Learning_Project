@@ -65,7 +65,7 @@ void display(void)
     glEnable(GL_TEXTURE_2D);
     for (const auto& item : display_queue)
     {
-        item->display(display_queue);
+        item->display();
     }
     glDisable(GL_TEXTURE_2D);
     glutSwapBuffers();
